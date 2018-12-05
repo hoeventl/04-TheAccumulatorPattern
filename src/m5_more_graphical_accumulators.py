@@ -160,7 +160,7 @@ def run_test_draw_circles_from_rectangle():
     rect2 = rg.Rectangle(rg.Point(600, 400), rg.Point(500, 450))
     rect2.fill_color = 'blue'
     rect2.outline_thickness = 3
-    rect2.outline_color = 'orange'
+    rect2.outline_color = 'red'
     draw_circles_from_rectangle(8, 3, rect2, window1)
 
     window1.close_on_mouse_click()
@@ -234,19 +234,23 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     rect_cent = rectangle.get_center()
     height = rectangle.get_height()
     width = rectangle.get_width()
+    ll = rectangle.get_lower_left_corner()
+    xpart = ll.x - height / 2
+    ur = rectangle.get_upper_right_corner()
+    ypart = ur.y - width / 2
     rectangle.attach_to(window)
     for k in range(m):
-        cent = rg.Point(rect_cent.x - (1 + k) * height, rect_cent.y)
+        cent = rg.Point(xpart - (k) * height, rect_cent.y)
         left_circle = rg.Circle(cent, height / 2)
         left_circle.fill_color = rectangle.fill_color
         left_circle.attach_to(window)
         window.render()
     for k in range(n):
-        cent = rg.Point(rect_cent.x, rect_cent.y - (k + 1) * width)
+        cent = rg.Point(rect_cent.x, ypart - (k) * width)
         up_circle = rg.Circle(cent, width / 2)
-        up_circle.fill_color = rectangle.outline_color
+        up_circle.outline_color = rectangle.outline_color
         up_circle.attach_to(window)
-
+        window.render()
 
 def run_test_draw_lines_from_rectangles():
     """ Tests the   draw_lines_from_rectangles  function. """
