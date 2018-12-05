@@ -167,7 +167,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -180,10 +180,12 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
-    for k in range(n + 1):
-        end_point = rg.Point(point.x + 100, point.y - k * (100 / n))
+    y2 = point.y
+    for k in range(n):
+        end_point = rg.Point(point.x + 100, y2 - 100)
         drawn_line = rg.Line(point, end_point)
         drawn_line.attach_to(window)
+        y2 = y2 + (200 / (n - 1))
     window.render()
 
 
