@@ -252,6 +252,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
         up_circle.attach_to(window)
         window.render()
 
+
 def run_test_draw_lines_from_rectangles():
     """ Tests the   draw_lines_from_rectangles  function. """
     print()
@@ -342,6 +343,33 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    rect1_cent = rectangle1.get_center()
+    rect2_cent = rectangle2.get_center()
+    width1 = rectangle1.get_width()
+    height1 = rectangle1.get_height()
+    if rectangle1.outline_color is None:
+        rectangle1.outline_color = 'black'
+    if rectangle2.outline_color is None:
+        rectangle2.outline_color = 'black'
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+    line = rg.Line(rect1_cent, rect2_cent)
+    line.color = rectangle2.outline_color
+    linecolor = line.color
+    for k in range(n):
+        line = rg.Line(rect1_cent, rect2_cent)
+        line.thickness = 5
+        if linecolor is rectangle1.outline_color:
+            linecolor = rectangle2.outline_color
+        else:
+            linecolor = rectangle1.outline_color
+        line.color = linecolor
+        line.attach_to(window)
+        window.render(0.1)
+        rect1_cent.x = rect1_cent.x - width1 / 2
+        rect1_cent.y = rect1_cent.y + height1 / 2
+        rect2_cent.x = rect2_cent.x - width1 / 2
+        rect2_cent.y = rect2_cent.y + height1 / 2
 
 
 # -----------------------------------------------------------------------------
