@@ -335,7 +335,7 @@ def run_test_sum_unit_fractions_from():
     # -------------------------------------------------------------------------
 
     # Test 2:
-    expected = 1.592857  # This is APPROXIMATELY the correct answer.
+    expected = 1.592857  # This is APPROXIMATELY the co rrect answer.
     answer = sum_unit_fractions_from(2, 7)
     print('Test 2 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
